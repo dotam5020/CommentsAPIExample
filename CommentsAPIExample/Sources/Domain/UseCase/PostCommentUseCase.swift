@@ -6,14 +6,9 @@
 //
 
 import Foundation
-struct PostCommentModel {
-    var name: String
-    var email: String
-    var comment: String
-}
 
 protocol IPostCommentUseCase {
-    func getCommentsMapper(completed: @escaping([PostCommentModel]) -> ())
+    func getCommentsMapper(completed: @escaping([PostCommentEntity]) -> ())
 }
 
 class PostCommentUseCase: IPostCommentUseCase {
@@ -23,12 +18,12 @@ class PostCommentUseCase: IPostCommentUseCase {
         self.repository = repository
     }
     
-    func getCommentsMapper(completed: @escaping ([PostCommentModel]) -> ()) {
-        var commentList: [PostCommentModel] = []
+    func getCommentsMapper(completed: @escaping ([PostCommentEntity]) -> ()) {
+        var commentList: [PostCommentEntity] = []
         repository.getCommentsResult { (result: PostCommentsResult) in
             switch result {
             case .success(let comments):
-                commentList.append(contentsOf: comments.map({ element -> PostCommentModel in
+                commentList.append(contentsOf: comments.map({ element -> PostCommentEntity in
                         .init(name: element.name, email: element.email, comment: element.body)
                 }))
                 completed(commentList)

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol IPostCommentViewModel {
-    var onShowAllComments: (([PostCommentModel]) -> ())? {get set}
+    var onShowAllComments: (([PostCommentEntity]) -> ())? {get set}
     func getCommentList()
 }
 
@@ -18,7 +18,7 @@ class PostCommentViewModel: IPostCommentViewModel {
         self.usecase = usecase
     }
     
-    var onShowAllComments: (([PostCommentModel]) -> ())?
+    var onShowAllComments: (([PostCommentEntity]) -> ())?
     func getCommentList() {
         usecase.getCommentsMapper {[weak self] comments in
             self?.onShowAllComments?(comments)

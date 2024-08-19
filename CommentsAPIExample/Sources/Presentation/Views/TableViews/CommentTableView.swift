@@ -10,19 +10,19 @@ import UIKit
 protocol ICommentTableView {
     var onReloadData: (() -> ())? {get set}
     func setupTableView(_ tableView: UITableView)
-    func updateData(_ comments: [PostCommentModel])
+    func updateData(_ comments: [PostCommentEntity])
 }
 
 class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource {
     var onReloadData: (() -> ())?
-    private var comments: [PostCommentModel] = []
+    private var comments: [PostCommentEntity] = []
     
     func setupTableView(_ tableView: UITableView) {
         tableView.dataSource = self
         tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.identifier)
     }
     
-    func updateData(_ comments: [PostCommentModel]) {
+    func updateData(_ comments: [PostCommentEntity]) {
         self.comments = comments
         onReloadData?()
     }
@@ -42,8 +42,8 @@ class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource {
 
 class CommentCell: UITableViewCell {
     static let identifier: String = String(describing: CommentCell.self)
-    private var _model: PostCommentModel!
-    var model: PostCommentModel {
+    private var _model: PostCommentEntity!
+    var model: PostCommentEntity {
         get {
             return _model
         } set {
