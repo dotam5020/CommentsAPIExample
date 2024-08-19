@@ -1,0 +1,6 @@
+framework module Pods_CommentsAPIExample {
+  umbrella header "Pods-CommentsAPIExample-umbrella.h"
+
+  export *
+  module * { export * }
+}
