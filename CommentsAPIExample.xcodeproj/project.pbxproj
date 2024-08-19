@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		124CDF462C72FD11004B29C3 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF452C72FD11004B29C3 /* CommentsViewController.swift */; };
+		124CDF482C72FD38004B29C3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF472C72FD38004B29C3 /* BaseViewController.swift */; };
+		124CDF4C2C731FE5004B29C3 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF4B2C731FE5004B29C3 /* NetworkConstant.swift */; };
+		124CDF4E2C732007004B29C3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF4D2C732007004B29C3 /* NetworkManager.swift */; };
+		124CDF502C732483004B29C3 /* PostCommentParamRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF4F2C732483004B29C3 /* PostCommentParamRequest.swift */; };
+		124CDF522C732493004B29C3 /* PostCommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF512C732493004B29C3 /* PostCommentResponse.swift */; };
+		124CDF542C732BFF004B29C3 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF532C732BFF004B29C3 /* BaseModel.swift */; };
+		124CDF592C732F3D004B29C3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF582C732F3D004B29C3 /* Extensions.swift */; };
+		124CDF5B2C732FF4004B29C3 /* PostCommentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF5A2C732FF4004B29C3 /* PostCommentRepository.swift */; };
+		124CDF5D2C73329D004B29C3 /* PostCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF5C2C73329D004B29C3 /* PostCommentUseCase.swift */; };
+		124CDF612C733B56004B29C3 /* PostCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF602C733B56004B29C3 /* PostCommentViewModel.swift */; };
+		124CDF662C734607004B29C3 /* CommentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CDF652C734607004B29C3 /* CommentTableView.swift */; };
 		12F56BAE2C72F05F00E6648C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F56BAD2C72F05F00E6648C /* AppDelegate.swift */; };
 		12F56BB02C72F05F00E6648C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F56BAF2C72F05F00E6648C /* SceneDelegate.swift */; };
 		12F56BB22C72F05F00E6648C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F56BB12C72F05F00E6648C /* ViewController.swift */; };
@@ -17,6 +29,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		124CDF452C72FD11004B29C3 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		124CDF472C72FD38004B29C3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		124CDF4B2C731FE5004B29C3 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		124CDF4D2C732007004B29C3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		124CDF4F2C732483004B29C3 /* PostCommentParamRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentParamRequest.swift; sourceTree = "<group>"; };
+		124CDF512C732493004B29C3 /* PostCommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentResponse.swift; sourceTree = "<group>"; };
+		124CDF532C732BFF004B29C3 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		124CDF582C732F3D004B29C3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		124CDF5A2C732FF4004B29C3 /* PostCommentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentRepository.swift; sourceTree = "<group>"; };
+		124CDF5C2C73329D004B29C3 /* PostCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentUseCase.swift; sourceTree = "<group>"; };
+		124CDF602C733B56004B29C3 /* PostCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentViewModel.swift; sourceTree = "<group>"; };
+		124CDF652C734607004B29C3 /* CommentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableView.swift; sourceTree = "<group>"; };
 		12F56BAA2C72F05F00E6648C /* CommentsAPIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommentsAPIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F56BAD2C72F05F00E6648C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12F56BAF2C72F05F00E6648C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +66,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		124CDF3B2C72FC5C004B29C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF642C7345EA004B29C3 /* TableViews */,
+				124CDF442C72FCF3004B29C3 /* ViewControllers */,
+				124CDF472C72FD38004B29C3 /* BaseViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		124CDF3F2C72FC94004B29C3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF602C733B56004B29C3 /* PostCommentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		124CDF402C72FCB5004B29C3 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF5C2C73329D004B29C3 /* PostCommentUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		124CDF412C72FCBE004B29C3 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF5A2C732FF4004B29C3 /* PostCommentRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		124CDF422C72FCC8004B29C3 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		124CDF432C72FCDC004B29C3 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF4B2C731FE5004B29C3 /* NetworkConstant.swift */,
+				124CDF4D2C732007004B29C3 /* NetworkManager.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
+		124CDF442C72FCF3004B29C3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF452C72FD11004B29C3 /* CommentsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		124CDF492C72FE4C004B29C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF4F2C732483004B29C3 /* PostCommentParamRequest.swift */,
+				124CDF512C732493004B29C3 /* PostCommentResponse.swift */,
+				124CDF532C732BFF004B29C3 /* BaseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		124CDF552C732E8A004B29C3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF582C732F3D004B29C3 /* Extensions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		124CDF642C7345EA004B29C3 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				124CDF652C734607004B29C3 /* CommentTableView.swift */,
+			);
+			path = TableViews;
+			sourceTree = "<group>";
+		};
 		12F56BA12C72F05F00E6648C = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +171,14 @@
 		12F56BAC2C72F05F00E6648C /* CommentsAPIExample */ = {
 			isa = PBXGroup;
 			children = (
+				124CDF552C732E8A004B29C3 /* Common */,
+				124CDF492C72FE4C004B29C3 /* Models */,
+				124CDF432C72FCDC004B29C3 /* Networks */,
+				124CDF422C72FCC8004B29C3 /* DataSources */,
+				124CDF412C72FCBE004B29C3 /* Repositories */,
+				124CDF402C72FCB5004B29C3 /* UseCase */,
+				124CDF3F2C72FC94004B29C3 /* ViewModels */,
+				124CDF3B2C72FC5C004B29C3 /* Views */,
 				12F56BAD2C72F05F00E6648C /* AppDelegate.swift */,
 				12F56BAF2C72F05F00E6648C /* SceneDelegate.swift */,
 				12F56BB12C72F05F00E6648C /* ViewController.swift */,
@@ -88,7 +204,6 @@
 				B521322942736604E0A82895 /* Pods-CommentsAPIExample.debug.xcconfig */,
 				6C89D94FDD852B07F8D9DC2A /* Pods-CommentsAPIExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,9 +322,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				124CDF612C733B56004B29C3 /* PostCommentViewModel.swift in Sources */,
+				124CDF522C732493004B29C3 /* PostCommentResponse.swift in Sources */,
+				124CDF482C72FD38004B29C3 /* BaseViewController.swift in Sources */,
+				124CDF502C732483004B29C3 /* PostCommentParamRequest.swift in Sources */,
+				124CDF462C72FD11004B29C3 /* CommentsViewController.swift in Sources */,
+				124CDF542C732BFF004B29C3 /* BaseModel.swift in Sources */,
+				124CDF5B2C732FF4004B29C3 /* PostCommentRepository.swift in Sources */,
 				12F56BB22C72F05F00E6648C /* ViewController.swift in Sources */,
+				124CDF592C732F3D004B29C3 /* Extensions.swift in Sources */,
+				124CDF4E2C732007004B29C3 /* NetworkManager.swift in Sources */,
 				12F56BAE2C72F05F00E6648C /* AppDelegate.swift in Sources */,
+				124CDF4C2C731FE5004B29C3 /* NetworkConstant.swift in Sources */,
 				12F56BB02C72F05F00E6648C /* SceneDelegate.swift in Sources */,
+				124CDF662C734607004B29C3 /* CommentTableView.swift in Sources */,
+				124CDF5D2C73329D004B29C3 /* PostCommentUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
