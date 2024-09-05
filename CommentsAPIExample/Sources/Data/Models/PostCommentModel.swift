@@ -7,4 +7,7 @@
 
 import Foundation
 
-struct data\
+struct data {
+  let id: String
+  let text: String
+}
