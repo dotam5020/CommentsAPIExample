@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import Combine
 
-typealias PostCommentsResult = Result<[PostCommentResponse], APIError>
 protocol IPostCommentRepository {
-    func getCommentsResult(_ completion: @escaping(PostCommentsResult) -> ())
+    func getCommentsResult() -> AnyPublisher<[PostCommentResponse], APIError>
 }
 
 class PostCommentRepository: IPostCommentRepository {
@@ -18,9 +18,7 @@ class PostCommentRepository: IPostCommentRepository {
         self.networkManager = networkManager
     }
 
-    func getCommentsResult(_ completion: @escaping (PostCommentsResult) -> ()) {
-        networkManager.requestAPI { (result: PostCommentsResult) in
-            completion(result)
-        }
+    func getCommentsResult() -> AnyPublisher<[PostCommentResponse], APIError> {
+       return networkManager.fetchDatas(endPoint: NetworkEndpoint.comments.rawValue, method: .get, paramRequest: PostCommentParamRequest())
     }
 }

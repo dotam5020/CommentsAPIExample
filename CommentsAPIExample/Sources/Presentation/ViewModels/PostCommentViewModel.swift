@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol IPostCommentViewModel {
     var onShowAllComments: (([PostCommentEntity]) -> ())? {get set}
@@ -13,15 +14,27 @@ protocol IPostCommentViewModel {
 }
 
 class PostCommentViewModel: IPostCommentViewModel {
+    private var cancellables = Set<AnyCancellable>()
     private var usecase: IPostCommentUseCase
     init(usecase: IPostCommentUseCase) {
         self.usecase = usecase
+        bind()
     }
     
+    @Published var comments: [PostCommentEntity] = []
     var onShowAllComments: (([PostCommentEntity]) -> ())?
+    
+    private func bind() {
+        usecase.commentListPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] comments in
+                self?.comments = comments
+                self?.onShowAllComments?(comments)
+            }
+            .store(in: &cancellables)
+    }
+    
     func getCommentList() {
-        usecase.getCommentsMapper {[weak self] comments in
-            self?.onShowAllComments?(comments)
-        }
+        usecase.getCommentsMapper()
     }
 }

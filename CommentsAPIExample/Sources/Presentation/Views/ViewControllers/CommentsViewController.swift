@@ -7,9 +7,10 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class CommentViewController: BaseViewController {
-    var viewModel: IPostCommentViewModel = PostCommentViewModel(usecase: PostCommentUseCase(repository: PostCommentRepository(networkManager: NetworkManager.shared)))
+    var viewModel: IPostCommentViewModel = PostCommentViewModel(usecase: Dependencies.postCommentUseCase)
     var tableViewEvent: ICommentTableView = CommentTableView()
     
     private lazy var tblView: UITableView = {
@@ -21,6 +22,8 @@ class CommentViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getCommentList()
+        tableViewEvent.setupTableView(tblView)
     }
     
     override func setupUI() {
@@ -33,9 +36,9 @@ class CommentViewController: BaseViewController {
     }
     
     override func bindData() {
-        viewModel.getCommentList()
         viewModel.onShowAllComments = {[weak self] cmts in
-            self?.tableViewEvent.updateData(cmts)
+            guard let self = self else {return}
+            self.tableViewEvent.updateData(cmts)
         }
     }
     

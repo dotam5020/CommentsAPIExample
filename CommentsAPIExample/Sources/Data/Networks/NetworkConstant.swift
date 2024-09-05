@@ -19,3 +19,14 @@ class NetworkConstant {
 enum NetworkEndpoint: String {
     case comments = "posts/1/comments"
 }
+
+enum EMethodRequest: String {
+    case get = "GET"
+    case post = "POST"
+    case delete = "DELETE"
+}
+
+enum EParameterEncoder: String {
+    case value = "application/json"
+    case field = "Content-Type"
+}

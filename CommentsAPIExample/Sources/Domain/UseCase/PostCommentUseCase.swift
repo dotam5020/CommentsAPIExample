@@ -6,32 +6,45 @@
 //
 
 import Foundation
+import Combine
 
 protocol IPostCommentUseCase {
-    func getCommentsMapper(completed: @escaping([PostCommentEntity]) -> ())
+    var commentListPublisher: Published<[PostCommentEntity]>.Publisher {get}
+    func getCommentsMapper()
 }
 
 class PostCommentUseCase: IPostCommentUseCase {
+    private var cancellables = Set<AnyCancellable>()
     private var repository: IPostCommentRepository
     
     init(repository: IPostCommentRepository) {
         self.repository = repository
     }
     
-    func getCommentsMapper(completed: @escaping ([PostCommentEntity]) -> ()) {
-        var commentList: [PostCommentEntity] = []
-        repository.getCommentsResult { (result: PostCommentsResult) in
-            switch result {
-            case .success(let comments):
-                commentList.append(contentsOf: comments.map({ element -> PostCommentEntity in
-                        .init(name: element.name, email: element.email, comment: element.body)
-                }))
-                completed(commentList)
-            case .failure(let error):
-                print("API call failed: \(error.localizedDescription)")
-                completed(commentList)
+    var commentListPublisher: Published<[PostCommentEntity]>.Publisher {
+        $commentList
+    }
+    
+    @Published var commentList: [PostCommentEntity] = []
+    
+    func getCommentsMapper(){
+        repository.getCommentsResult()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("Error: \(error)")
+                case .finished:
+                    print("Success")
+                }
+            } receiveValue: {[weak self] response in
+                let mapperData = response.map { cmt -> PostCommentEntity in
+                        .init(name: cmt.name, email: cmt.email, comment: cmt.body)
+                }
+                self?.commentList = mapperData
+                
             }
-        }
+            .store(in: &cancellables)
     }
 }
 
