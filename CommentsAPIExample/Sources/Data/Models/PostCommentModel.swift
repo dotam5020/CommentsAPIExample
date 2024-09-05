@@ -7,7 +7,3 @@
 
 import Foundation
 
-struct data {
-  let id: String
-  let text: String
-}
