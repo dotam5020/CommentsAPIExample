@@ -8,3 +8,7 @@
 import Foundation
 
 struct PostCommentParamRequest: Codable {}
+
+struct DeleteCommentParamRequest: Codable {
+    let id: Int
+}

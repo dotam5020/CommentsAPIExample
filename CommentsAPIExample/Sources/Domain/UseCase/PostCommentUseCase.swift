@@ -33,13 +33,13 @@ class PostCommentUseCase: IPostCommentUseCase {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    print("Error: \(error)")
+                    print("Get list Error: \(error)")
                 case .finished:
-                    print("Success")
+                    print("Get list Success")
                 }
             } receiveValue: {[weak self] response in
                 let mapperData = response.map { cmt -> PostCommentEntity in
-                        .init(name: cmt.name, email: cmt.email, comment: cmt.body)
+                        .init(id: cmt.id, name: cmt.name, email: cmt.email, comment: cmt.body)
                 }
                 self?.commentList = mapperData
                 

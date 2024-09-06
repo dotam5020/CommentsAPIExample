@@ -10,7 +10,7 @@ import SnapKit
 import Combine
 
 class CommentViewController: BaseViewController {
-    var viewModel: IPostCommentViewModel = PostCommentViewModel(usecase: Dependencies.postCommentUseCase)
+    var viewModel: IPostCommentViewModel = PostCommentViewModel(getUsecase: Dependencies.postCommentUseCase, deleteUsecase: Dependencies.deleteCommentUseCase)
     var tableViewEvent: ICommentTableView = CommentTableView()
     
     private lazy var tblView: UITableView = {
@@ -40,12 +40,24 @@ class CommentViewController: BaseViewController {
             guard let self = self else {return}
             self.tableViewEvent.updateData(cmts)
         }
+        
+        viewModel.onRemoveSuccess = {[weak self] in
+            DispatchQueue.main.async {
+                self?.tblView.reloadData()
+            }
+        }
     }
     
     override func bindEvent() {
         tableViewEvent.setupTableView(tblView)
         tableViewEvent.onReloadData = {[weak self] in
-            self?.tblView.reloadData()
+            DispatchQueue.main.async {
+                self?.tblView.reloadData()
+            }
+        }
+        
+        tableViewEvent.onDeleteRow = {[weak self] row in
+            self?.viewModel.deleteCommentById(row: row)
         }
     }
 }

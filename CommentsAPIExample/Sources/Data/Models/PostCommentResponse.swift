@@ -14,3 +14,5 @@ struct PostCommentResponse: Codable {
     let email: String
     let body: String
 }
+
+struct DeleteCommentResponse: Codable {}

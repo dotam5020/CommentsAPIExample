@@ -16,8 +16,18 @@ class NetworkConstant {
     }
 }
 
-enum NetworkEndpoint: String {
-    case comments = "posts/1/comments"
+enum NetworkEndpoint {
+    case getComments
+    case deleteComment(id: Int)
+    
+    var path: String {
+        switch self {
+        case .getComments:
+            return "posts/1/comments"
+        case .deleteComment(let id):
+            return "comments/\(id)"
+        }
+    }
 }
 
 enum EMethodRequest: String {

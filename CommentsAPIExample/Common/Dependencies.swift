@@ -15,6 +15,14 @@ class Dependencies {
         return shared.resolvedPostCommentUseCase
     }
     
+    static var deleteCommentUseCase: IDeleteCommentUseCase {
+        return shared.resolvedDeleteCommentUseCase
+    }
+    
+    
+    private lazy var resolvedDeleteCommentUseCase: IDeleteCommentUseCase = {
+        return DeleteCommentUseCase(repository: resolvedPostCommentRepository)
+    }()
     
     private lazy var resolvedPostCommentUseCase: IPostCommentUseCase = {
         return PostCommentUseCase(repository: resolvedPostCommentRepository)

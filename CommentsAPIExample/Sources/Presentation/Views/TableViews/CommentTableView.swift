@@ -9,16 +9,19 @@ import UIKit
 
 protocol ICommentTableView {
     var onReloadData: (() -> ())? {get set}
+    var onDeleteRow: ((Int) -> ())? {get set}
     func setupTableView(_ tableView: UITableView)
     func updateData(_ comments: [PostCommentEntity])
 }
 
-class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource {
+class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource, UITableViewDelegate {
     var onReloadData: (() -> ())?
+    var onDeleteRow: ((Int) -> ())?
     private var comments: [PostCommentEntity] = []
     
     func setupTableView(_ tableView: UITableView) {
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.identifier)
     }
     
@@ -37,6 +40,16 @@ class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource {
         guard let cell = cell as? CommentCell else {return cell}
         cell.model = model
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && !comments.isEmpty {
+            onDeleteRow?(indexPath.row)
+        }
     }
 }
 
