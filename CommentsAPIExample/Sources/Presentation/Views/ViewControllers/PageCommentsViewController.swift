@@ -1,5 +1,5 @@
 //
-//  CommentViewController.swift
+//  PageCommentsViewController.swift
 //  CommentsAPIExample
 //
 //  Created by Thanh Le on 19/08/2024.
@@ -9,8 +9,8 @@ import UIKit
 import SnapKit
 import Combine
 
-class CommentViewController: BaseViewController {
-    var viewModel: IPostCommentViewModel = PostCommentViewModel(getUsecase: Dependencies.postCommentUseCase, deleteUsecase: Dependencies.deleteCommentUseCase)
+class PageCommentsViewController: BaseViewController {
+    var viewModel: IPageCommentsViewModel = PageCommentsViewModel(getUsecase: Dependencies.getCommentsUseCase, deleteUsecase: Dependencies.deleteCommentUseCase)
     var tableViewEvent: ICommentTableView = CommentTableView()
     
     private lazy var tblView: UITableView = {
@@ -22,7 +22,9 @@ class CommentViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getCommentList()
+        DispatchQueue.main.async {
+            self.viewModel.getCommentList()
+        }
         tableViewEvent.setupTableView(tblView)
     }
     

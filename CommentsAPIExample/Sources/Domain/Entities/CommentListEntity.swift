@@ -1,5 +1,5 @@
 //
-//  PostCommentEntity.swift
+//  CommentListEntity.swift
 //  CommentsAPIExample
 //
 //  Created by Thanh Le on 19/08/2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostCommentEntity {
+struct CommentListEntity {
     var id: Int
     var name: String
     var email: String

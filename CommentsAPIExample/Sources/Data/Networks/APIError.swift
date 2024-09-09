@@ -21,7 +21,7 @@ extension APIError: LocalizedError {
         case .invalidURL:
             return NSLocalizedString("Invalid URL", comment: "Invalid URL")
         case .invalidResponse:
-            return NSLocalizedString("Rsponse Error", comment: "Invalid response")
+            return NSLocalizedString("Response Error", comment: "Invalid response")
         case .decodingError:
             return NSLocalizedString("Decoding error", comment: "Decoding error")
         case .statusCode(let code):

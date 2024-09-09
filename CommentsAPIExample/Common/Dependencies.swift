@@ -11,8 +11,8 @@ class Dependencies {
     static let shared = Dependencies()
     private init(){}
     
-    static var postCommentUseCase: IPostCommentUseCase {
-        return shared.resolvedPostCommentUseCase
+    static var getCommentsUseCase: IGetCommentListUseCase {
+        return shared.resolvedGetCommentsUseCase
     }
     
     static var deleteCommentUseCase: IDeleteCommentUseCase {
@@ -21,14 +21,14 @@ class Dependencies {
     
     
     private lazy var resolvedDeleteCommentUseCase: IDeleteCommentUseCase = {
-        return DeleteCommentUseCase(repository: resolvedPostCommentRepository)
+        return DeleteCommentUseCase(repository: resolvedPageCommentsRepository)
     }()
     
-    private lazy var resolvedPostCommentUseCase: IPostCommentUseCase = {
-        return PostCommentUseCase(repository: resolvedPostCommentRepository)
+    private lazy var resolvedGetCommentsUseCase: IGetCommentListUseCase = {
+        return GetCommentListUseCase(repository: resolvedPageCommentsRepository)
     }()
     
-    private lazy var resolvedPostCommentRepository: IPostCommentRepository = {
-        return PostCommentRepository(networkManager: NetworkManager.shared)
+    private lazy var resolvedPageCommentsRepository: IPageCommentsRepository = {
+        return PageCommentsRepository(networkManager: NetworkManager.shared)
     }()
 }

@@ -11,13 +11,13 @@ protocol ICommentTableView {
     var onReloadData: (() -> ())? {get set}
     var onDeleteRow: ((Int) -> ())? {get set}
     func setupTableView(_ tableView: UITableView)
-    func updateData(_ comments: [PostCommentEntity])
+    func updateData(_ comments: [CommentListEntity])
 }
 
 class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource, UITableViewDelegate {
     var onReloadData: (() -> ())?
     var onDeleteRow: ((Int) -> ())?
-    private var comments: [PostCommentEntity] = []
+    private var comments: [CommentListEntity] = []
     
     func setupTableView(_ tableView: UITableView) {
         tableView.dataSource = self
@@ -25,7 +25,7 @@ class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource, UITa
         tableView.register(CommentCell.self, forCellReuseIdentifier: CommentCell.identifier)
     }
     
-    func updateData(_ comments: [PostCommentEntity]) {
+    func updateData(_ comments: [CommentListEntity]) {
         self.comments = comments
         onReloadData?()
     }
@@ -55,8 +55,8 @@ class CommentTableView: NSObject, ICommentTableView, UITableViewDataSource, UITa
 
 class CommentCell: UITableViewCell {
     static let identifier: String = String(describing: CommentCell.self)
-    private var _model: PostCommentEntity!
-    var model: PostCommentEntity {
+    private var _model: CommentListEntity!
+    var model: CommentListEntity {
         get {
             return _model
         } set {
