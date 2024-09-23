@@ -20,10 +20,10 @@ class PageCommentsRepository: IPageCommentsRepository {
     }
 
     func getCommentsResult() -> AnyPublisher<[GetCommentListResponse], APIError> {
-        return networkManager.fetchDatas(endPoint: NetworkEndpoint.getComments.path, method: .get, paramRequest: GetCommentListParamRequest())
+        return networkManager.fetchDatas(request: GetComments())
     }
     
     func deleteCommentById(request: DeleteCommentParamRequest) -> AnyPublisher<DeleteCommentResponse, APIError> {
-        return networkManager.fetchDatas(endPoint: NetworkEndpoint.deleteComment(id: request.id).path, method: .delete, paramRequest: request)
+        return networkManager.fetchDatas(request: DeleteComment(id: request.id))
     }
 }

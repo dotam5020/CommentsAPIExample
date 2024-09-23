@@ -12,19 +12,19 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init(){}
     
-    func fetchDatas<T: Codable, E: Codable>(endPoint: String, method: EMethodRequest, paramRequest: E?) -> AnyPublisher<T, APIError>{
-        guard let url = URL(string: "\(NetworkConstant.shared.baseURL)\(endPoint)") else {
+    func fetchDatas<R: NetworkRequest>(request: R) -> AnyPublisher<R.ResponseMethod, APIError>{
+        guard let url = URL(string: "\(NetworkConstant.shared.baseURL)\(request.endPoint)") else {
             return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
         }
         print("Request URL: \(url)")
         
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
+        var requestURL = URLRequest(url: url)
+        requestURL.httpMethod = request.method.rawValue
         
-        if let paramRequest = paramRequest {
+        if let paramRequest = request.paramRequest {
             do {
-                request.httpBody = try JSONEncoder().encode(paramRequest)
-                request.addValue(EParameterEncoder.value.rawValue, forHTTPHeaderField: EParameterEncoder.field.rawValue)
+                requestURL.httpBody = try JSONEncoder().encode(paramRequest)
+                requestURL.addValue(EParameterEncoder.value.rawValue, forHTTPHeaderField: EParameterEncoder.field.rawValue)
             } catch {
                 return Fail(error: APIError.decodingError).eraseToAnyPublisher()
             }
@@ -37,7 +37,7 @@ class NetworkManager {
                 }
                 return result.data
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: R.ResponseMethod.self, decoder: JSONDecoder())
             .mapError { error -> APIError in
                 if let apiErr = error as? APIError {
                     return apiErr

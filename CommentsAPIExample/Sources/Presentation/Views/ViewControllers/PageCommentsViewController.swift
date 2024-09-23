@@ -22,9 +22,8 @@ class PageCommentsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
-            self.viewModel.getCommentList()
-        }
+        
+        viewModel.getCommentList()
         tableViewEvent.setupTableView(tblView)
     }
     
@@ -63,5 +62,3 @@ class PageCommentsViewController: BaseViewController {
         }
     }
 }
-
-
